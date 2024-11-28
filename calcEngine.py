@@ -1,6 +1,5 @@
-import json
-import time
 from s3_backup import *
+import json
 
 #####################
 # 계산 엔진        

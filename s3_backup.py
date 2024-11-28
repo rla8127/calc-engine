@@ -1,18 +1,15 @@
+import os
 import boto3
 import logging
-import os
 from datetime import datetime
 
 # 해당 파일은 매일 00시 00분에 Corntab에서 실행하도록 설정되어 있음.
-
 
 #################################
 # AWS S3 설정
 s3_client = boto3.client('s3', region_name='eu-north-1')
 bucket_name = 'chunjae-test-donghyun-bucket'
 ##################################
-
-
 
 ##################################
 # Logging 설정
