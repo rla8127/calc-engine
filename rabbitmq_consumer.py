@@ -6,7 +6,7 @@ import pika
 ##########################################
 # 변수선언
 ##########################################
-HOST_NAME = "localhost"
+HOST_NAME = "172.16.10.237"
 USERNAME = "fastapi_user"
 PASSWORD = "fastapi_user"
 

@@ -38,9 +38,9 @@ def calc(expression):
             elif item == "-": 
                 result -= calc_list[idx+1] 
 
-        calcLogger.info(f"Result: {result}")
-        return json.dumps({"result": result})
+        # calcLogger.info(f"Result: {result}")
+        return result
     
     except Exception as e:
-        calcLogger.error(f"Error: {str(e)}")
+        # calcLogger.error(f"Error: {str(e)}")
         return json.dumps({"error": str(e)})
