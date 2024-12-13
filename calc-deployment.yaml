@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calc-engine-deployment
+  namespace: default
+spec:
+  replicas: 3 
+  selector:
+    matchLabels:
+      app: calc-engine
+  template:
+    metadata:
+      labels:
+        app: calc-engine
+    spec:
+      containers:
+        - name: calc-engine-container
+          image: 466015366405.dkr.ecr.eu-north-1.amazonaws.com/calc-engine:1.1
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: calc-engine-config
+            - secretRef:
+                name: calc-engine-secret

@@ -1,5 +1,9 @@
+import os
 import redis
 from threading import Lock
+
+REDIS_HOST = os.getenv("REDIS_HOST")
+REDIS_PORT = os.getenv("REDIS_PORT")
 
 ##########################################
 # CallBack 함수
@@ -17,7 +21,7 @@ class RedisSingleton:
                     cls._instance.redis = redis.Redis(host=host, port=port, db=db)
         return cls._instance
     
-redis_instance = RedisSingleton(host='172.16.10.237', port=6379, db=0)
+redis_instance = RedisSingleton(host=REDIS_HOST, port=REDIS_PORT, db=0)
 # 싱글톤 확인 print(redis_instance is redis_instance2)
 
 ##########################################
@@ -29,7 +33,7 @@ def set_result(request_id, result):
         try:
             if not redis_instance.redis.ping():
                 print("Redis 재연결 시도 중 ...")
-                redis_instance = RedisSingleton(host='172.16.10.237', port=6379, db=0)
+                redis_instance = RedisSingleton(host=REDIS_HOST, port=REDIS_PORT, db=0)
             
             redis_instance.redis.set(request_id, result, ex=60)
             value = redis_instance.redis.get(request_id)

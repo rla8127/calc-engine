@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: calc-engine-config
+  namespace: default
+data:
+  REDIS_HOST: "10.0.101.129"
+  REDIS_PORT: "6379"
+  RABBIT_HOST: "10.0.101.129"
+  RABBIT_PORT: "5672"
+  RABBIT_USERNAME: "fastapi-user"
+  RABBIT_PASSWORD: "fastapi-user"
